@@ -1,0 +1,115 @@
+.techstack-section {
+  padding: 8rem 2rem;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.techstack-title {
+  font-size: 70px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 50px;
+  text-align: center;
+  color: white;
+}
+
+.techstack-title > span {
+  color: var(--accentColor);
+}
+
+.techstack-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 900px;
+}
+
+.tech-pill {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle glow internal pseudo-element */
+.tech-pill::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50px;
+  background: linear-gradient(45deg, rgba(74, 222, 128, 0.1), rgba(34, 211, 238, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.tech-pill:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 15px 30px rgba(34, 211, 238, 0.2), inset 0 0 15px rgba(34, 211, 238, 0.1);
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  /* Reset animation transform on hover so it doesn't fight */
+  animation-play-state: paused;
+}
+
+.tech-pill:hover::before {
+  opacity: 1;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Stagger floating animations to make it dynamic */
+.tech-pill:nth-child(1)  { animation-delay: 0.0s; }
+.tech-pill:nth-child(2)  { animation-delay: 0.5s; }
+.tech-pill:nth-child(3)  { animation-delay: 1.0s; }
+.tech-pill:nth-child(4)  { animation-delay: 1.5s; }
+.tech-pill:nth-child(5)  { animation-delay: 2.0s; }
+.tech-pill:nth-child(6)  { animation-delay: 2.5s; }
+.tech-pill:nth-child(7)  { animation-delay: 3.0s; }
+.tech-pill:nth-child(8)  { animation-delay: 3.5s; }
+.tech-pill:nth-child(9)  { animation-delay: 4.0s; }
+.tech-pill:nth-child(10) { animation-delay: 4.5s; }
+
+/* Mobile responsiveness */
+@media screen and (max-width: 1400px) {
+  .techstack-title {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .techstack-title {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tech-pill {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
